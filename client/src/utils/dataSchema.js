@@ -66,9 +66,14 @@ export const validatePatientSchema = z.object({
   bloodGroup: z.string({
     message: "Blood group is required",
   }),
-  emergencyContact: z.string().min(3, {
-    message: "Emergency contact must be at least 3 characters long",
-  }),
+  emergencyContact: z
+    .string()
+    .min(3, {
+      message: "Emergency contact must be at least 3 characters long",
+    })
+    .regex(/[A-Za-z]/, {
+      message: "Emergency contact name must contain only letters",
+    }),  
   emergencyContactPhone: z.string().min(11, {
     message: "Emergency contact phone must be at least 11 characters long",
   }),
@@ -247,9 +252,12 @@ export const validateBookAppointmentSchema = z.object({
 });
 
 export const validateConfirmAppointmentSchema = z.object({
-  doctorId: z.string().min(3, {
-    message: "Doctor is required",
-  }).optional(),
+  doctorId: z
+    .string()
+    .min(3, {
+      message: "Doctor is required",
+    })
+    .optional(),
   status: z
     .enum(["scheduled", "confirmed", "cancelled"])
     .refine((value) => value !== "", {

@@ -188,6 +188,9 @@ export default function PatientsOnboard() {
                   errors={errors}
                   type="tel"
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  Only Nigerian numbers (+234) are accepted
+                </p>
               </div>
               <div className="md:col-span-6">
                 <FormField
@@ -239,13 +242,16 @@ export default function PatientsOnboard() {
               </div>
               <div className="md:col-span-6">
                 <FormField
-                  label="Emergency contact"
+                  label="Emergency contact name"
                   id="emergencyContact"
                   register={register}
                   name="emergencyContact"
                   placeholder="Emergency contact name"
                   errors={errors}
                   type="text"
+                  className={`w-full mt-1 p-2 border rounded-md placeholder-gray-400 ${
+                    error ? "border-red-500" : ""
+                  }`}
                 />
               </div>
               <div className="md:col-span-6">

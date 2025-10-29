@@ -94,15 +94,25 @@ export default function Signup() {
               register={register}
               errors={errors}
               name="password"
+              onChange={(e) => setPassword(e.target.value)}
               isVisible={isVisible}
               setIsVisible={setIsVisible}
+              className="w-full mt-1 p-2 border rounded-md placeholder-gray-400"
             />
-            <Link
+            <ul class="password-criteria mt-1 text-xs text-gray-500 list-disc list-inside">
+              <li>At least 8 characters</li>
+              <li>One uppercase letter</li>
+              <li>One lowercase letter</li>
+              <li>One number</li>
+              <li>One special character (e.g. @, #, $)</li>
+            </ul>
+
+            {/* <Link
               to="/account/forgot-password"
               className="text-blue-500 font-bold text-sm"
             >
               Forgot Password?
-            </Link>
+            </Link> */}
           </div>
         </div>
         <button
